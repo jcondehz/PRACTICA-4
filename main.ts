@@ -41,7 +41,6 @@ const handler = async (req: Request): Promise<Response> => {
         projectsDB.map((ProjectModel) => fromProjectModelToProject(ProjectModel))
       );
       return new Response(JSON.stringify(projects), {
-        headers: { "content-type": "application/json" },
       });
     }else if (path === "/tasks") {
       const tasksDB = await taskCollection.find().toArray();
@@ -49,7 +48,6 @@ const handler = async (req: Request): Promise<Response> => {
         tasksDB.map((taskModel) => fromTaskModelToTask(taskModel))
       );
       return new Response(JSON.stringify(tasks), {
-        headers: { "content-type": "application/json" },
       });
     }else if (path === "/projects/by-user") {
       const user_id = url.searchParams.get('user_id');
